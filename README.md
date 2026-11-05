@@ -1,8 +1,19 @@
+<p align="center">
+  <a href="https://biovantagelab.com">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/biovantagelab-logo-dark.svg">
+      <img src="assets/biovantagelab-logo-light.svg" alt="BioVantageLab" height="64">
+    </picture>
+  </a>
+</p>
+
 # Athar
 
-Athar is an AI research agent by BioVantageLab. It runs in your terminal, works
-in your project folder, and helps you investigate questions, examine evidence
-and build on earlier work.
+Athar is an AI research agent by [BioVantageLab](https://biovantagelab.com). It
+runs in your terminal, works in your project folder, and helps you investigate
+questions, examine evidence and build on earlier work.
+
+Website: [biovantagelab.com](https://biovantagelab.com)
 
 This is a **preview** for Apple Silicon Macs (M1 or later) with macOS 13 or
 newer. It includes its own Python runtime, so you do not need Python, pip or
@@ -54,4 +65,5 @@ this repository holds no source code. Your use is governed by the
 
 ## Contact
 
-Questions: melrefaiy@biovantagelab.com
+- Website: [biovantagelab.com](https://biovantagelab.com)
+- Questions: melrefaiy@biovantagelab.com
