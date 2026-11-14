@@ -61,11 +61,14 @@ curl -fsSL https://github.com/biovantagelab/athar/releases/latest/download/insta
 ```sh
 cd /path/to/your/project
 athar doctor
-athar --provider claude --allow-cloud
+athar --provider claude
 ```
 
-Privacy Mode is on by default: Athar sends nothing to a cloud provider until you
-allow it. The `README.md` installed with Athar explains every model route,
+Privacy Mode is off by default: when you choose a cloud model, Athar sends your
+prompts and the files the agent reads to that provider. You are responsible for
+that choice. To block the cloud, turn Privacy Mode on: `athar --privacy` for one
+run, `athar defaults --privacy` for a project, or a local model in Ollama or LM
+Studio. The `README.md` installed with Athar explains every model route,
 updates and uninstalling. Its path is printed at the end of the install.
 
 ## Licence and responsibility
