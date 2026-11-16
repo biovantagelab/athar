@@ -21,26 +21,25 @@ It includes its own Python runtime, so you do not need Python, pip or
 Homebrew. You do need a model provider: your own Claude Code sign-in, an OpenAI
 API key, or a local model in Ollama or LM Studio.
 
-## What's new in 0.0.21
+## What's new in 0.0.22
 
-- **GitHub pull requests, start to finish.** The github tool now opens draft
-  PRs. It reads CI checks, with the log tail of failed jobs, and review threads.
-  It replies, resolves threads, force-pushes with a lease on its own branches,
-  and merges. A merge runs on its own only when every check passed and the PR is
-  your own; anything else asks you first. It acts only on the project's own
-  repository, and text from GitHub is treated as data, never as instructions.
-  macOS only for now.
-- **Approved commands.** `athar allow "npm test"` lets a matching command
-  run outside the sandbox without asking, also in print mode. Use it for test
-  suites, Xcode or anything that starts its own sandbox. Run `athar allow` in
-  your own terminal; `athar allow --list` and `--remove` manage the rules.
-- **git and Python tools in the sandbox.** `git merge`, `fetch`, `cherry-pick`
-  and `revert` now work, and so does git in a linked worktree (Athar asks once
-  per worktree). `uv sync` can now install packages.
-- **Web access when it is needed.** When a command fails because the sandbox has
-  no network, Athar now asks you for web access instead of giving up.
+- **Reads run together.** When the model asks for several reads in one step
+  (files, web pages, searches, literature, memory), Athar now runs them at the
+  same time: up to 8 at once, and up to 3 on the same web host. Anything that
+  can change files or ask you a question still runs alone, in order.
+- **Approve a family of commands once.** When Athar asks to run a command
+  outside the sandbox, you can answer "allow commands that start with ..." for
+  the rest of the session, for example every `uv run pytest` command.
+- **Clearer hand-offs in the full-screen view.** Work handed to Claude Code,
+  OpenCode or a sub-agent shows as a card with a title, the model and the time.
+  A finished task says what it changed, and warns when it edited files but ran
+  no command.
+- **Security fix.** A sub-agent that cannot ask you anything can no longer run
+  a command outside the sandbox on an earlier "yes" you gave its parent.
+- **Lower cost with `--provider claude`.** The system prompt now stays the same
+  from prompt to prompt, so the prompt cache works.
 
-Full notes: [release v0.0.21](https://github.com/biovantagelab/athar/releases/tag/v0.0.21).
+Full notes: [release v0.0.22](https://github.com/biovantagelab/athar/releases/tag/v0.0.22).
 If you have 0.0.3 or newer, run `athar update`.
 
 ## Install
