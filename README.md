@@ -21,25 +21,21 @@ It includes its own Python runtime, so you do not need Python, pip or
 Homebrew. You do need a model provider: your own Claude Code sign-in, an OpenAI
 API key, or a local model in Ollama or LM Studio.
 
-## What's new in 0.0.22
+## What's new in 0.0.23
 
-- **Reads run together.** When the model asks for several reads in one step
-  (files, web pages, searches, literature, memory), Athar now runs them at the
-  same time: up to 8 at once, and up to 3 on the same web host. Anything that
-  can change files or ask you a question still runs alone, in order.
-- **Approve a family of commands once.** When Athar asks to run a command
-  outside the sandbox, you can answer "allow commands that start with ..." for
-  the rest of the session, for example every `uv run pytest` command.
-- **Clearer hand-offs in the full-screen view.** Work handed to Claude Code,
-  OpenCode or a sub-agent shows as a card with a title, the model and the time.
-  A finished task says what it changed, and warns when it edited files but ran
-  no command.
-- **Security fix.** A sub-agent that cannot ask you anything can no longer run
-  a command outside the sandbox on an earlier "yes" you gave its parent.
-- **Lower cost with `--provider claude`.** The system prompt now stays the same
-  from prompt to prompt, so the prompt cache works.
+- **Tokens for every round.** At the end of each round Athar shows the input,
+  output and cached tokens it used, and thinking tokens where the provider
+  reports them.
+- **Subscription usage.** With a Claude or ChatGPT subscription, a line under
+  the text box shows how much of each usage limit is used, for example
+  `ChatGPT 30d 100%`, and says when credits pay past a full limit.
+- **Sub-agents run together.** Several tasks handed to sub-agents in one step
+  now run at the same time. A sub-agent can name its own model, and a project
+  can save a default: `athar defaults --worker-provider P --worker-model M`.
+- **Security fix.** A force push that nobody can be asked about now refuses,
+  even after an earlier "yes" in the parent run.
 
-Full notes: [release v0.0.22](https://github.com/biovantagelab/athar/releases/tag/v0.0.22).
+Full notes: [release v0.0.23](https://github.com/biovantagelab/athar/releases/tag/v0.0.23).
 If you have 0.0.3 or newer, run `athar update`.
 
 ## Install
